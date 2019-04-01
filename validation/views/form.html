@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="form.css">
+	<link rel="stylesheet" href="main.css">
+  <meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		
+</head>
+<body>
+<form method="POST" action="ajoutPromo.php">
+	
+
+<div class="container">
+     <h2>Promotions</h2>
+     <p>Ajout de promotions :</p>          
+<div class="form-row">
+<div class="form-group col-md-6">
+    <label  for="id_promo">id</label>
+    <input  class="form-control" type="number" name="id_promo" id="id_promo"  placeholder="id" onblur="verifierID(this)" required ></td>
+    <span id="missid" class="resultat"></span></br>
+</div>
+
+
+
+
+
+<div class="form-group col-md-6">
+    <label for="taux">Remise</label>
+    <input type="number" class="form-control" name="taux" id="taux" placeholder="porcentage remise" onblur="verifierTaux(this)" required>
+    <span  id="misstaux" class="resultat"></span>
+</div>
+</div>
+
+
+<div class="form-group col-md-6">
+<label for="date debut">Date debut</label>
+<input type="date" class="form-control" name="d" id="deb" placeholder="Date deb" onblur="verifierDebut(this)" required>
+<span  id="missdeb" class="resultat"></span>
+</div>
+
+
+
+<div class="form-group col-md-6">
+<label for="date fin">Date fin</label>
+<input type="date" class="form-control" name="f" id="fin" placeholder="Date fin" onblur="verifierFin(this)" required>
+<span  id="missfin" class="resultat"></span>
+</div>
+</div>
+
+
+
+
+
+
+<div class="form-group col-md-6">
+
+<div class="col-sm-10" >
+<button class="btn btn-primary" type="submit"  id="ajouter" name="ajouter" value="ajouter"> ajouter </button>
+</div>
+
+</div>
+
+
+</form>
+
+<script>
+
+               
+
+	
+      var formValid = document.getElementById('ajouter');
+  
+      var taux=document.getElementById('taux');
+      var misstaux = document.getElementById('misstaux');
+
+
+      var id=document.getElementById('id_promo');
+      var missid = document.getElementById('missid');
+
+
+
+      var deb=document.getElementById('deb');
+      var missdeb = document.getElementById('missdeb');
+
+
+      var fin=document.getElementById('fin');
+      var missfin = document.getElementById('missfin');
+
+      formValid.addEventListener('click', validation_3);
+      /*
+       function validation_taux(promo)
+       {
+                //Si le champ est vide
+                if (taux.validity.valueMissing)
+                {
+                    promo.preventDefault();
+                    misstaux.textContent = 'taux manquant';
+                    misstaux.style.color = 'red';
+                //Si le format de données est incorrect
+                }
+
+                else
+                { 
+                	misstaux.textContent = 'ok';
+                    misstaux.style.color = 'green';
+                }
+        }
+    
+     
+      var  id_promo = document.getElementById('id_promo');
+    
+      var missid = document.getElementById('missid');
+      formValid.addEventListener('mouseout', validation);
+      function validation(promo){
+                //Si le champ est vide
+                if (id_promo.validity.valueMissing){
+                    promo.preventDefault();
+                    missid.textContent = 'id manquant';
+                    missid.style.color = 'red';
+                //Si le format de données est incorrect
+                }
+                else
+                { 
+                     missid.textContent = 'ok';
+                    misstid.style.color = 'green';
+                }
+            }
+
+
+      var  deb = document.getElementById('deb');
+       var missdeb = document.getElementById('missdeb');
+         var missfin = document.getElementById('missfin');
+       formValid.addEventListener('click', validation_3);
+      var  fin = document.getElementById('fin');
+     
+     
+
+      /*function validation_deb(event)
+      {
+                //Si le champ est vide
+                if (deb.validity.valueMissing)
+                {
+                    event.preventDefault();
+                    missdeb.textContent = 'date manquante';
+                    missdeb.style.color = 'red';
+                //Si le format de données est incorrect
+                
+                }
+              
+                else
+                { 
+                    missdeb.textContent = 'ok';
+                    missdeb.style.color = 'green';
+                }
+            }
+       /*********************************************************************/
+/*
+         var  fin = document.getElementById('fin');
+     
+      var missfin = document.getElementById('missfin');
+      formValid.addEventListener('click', validation_fin);
+      function validation_fin(event)
+      {
+                //Si le champ est vide
+                if (fin.validity.valueMissing)
+                {
+                    event.preventDefault();
+                    missfin.textContent = 'date manquante';
+                    missfin.style.color = 'red';
+                   
+
+                //Si le format de données est incorrect
+                
+                }
+                else
+                { 
+                    missfin.textContent = 'ok';
+                    missfin.style.color = 'green';
+                }
+            }
+   /**************************************************************************/
+  
+           function validation_3(event)
+      {
+
+
+                      if (id.validity.valueMissing )
+                    {
+                        event.preventDefault();
+                        missid.textContent = 'champ obligatoire';
+                        missid.style.color = 'red';
+                    }
+
+                   
+
+
+                    if(fin.validity.valueMissing )
+                    {
+
+                       event.preventDefault();
+                        missfin.textContent = 'champ obligatoire';
+                        missfin.style.color = 'red';
+                    }
+
+                    if (deb.validity.valueMissing )
+                    {
+                        event.preventDefault();
+                        missdeb.textContent = 'champ obligatoire';
+                        missdeb.style.color = 'red';
+                 
+                    
+                    } 
+
+                   
+                    if(taux.validity.valueMissing )
+                    {
+
+                       event.preventDefault();
+                        misstaux.textContent = 'champ obligatoire';
+                        misstaux.style.color = 'red';
+                    }
+
+                
+		               
+		                   
+		                
+
+		}
+
+
+
+/**********************************************/
+ function surligne (champ,erreur)
+   {
+    if(erreur)
+    
+      champ.style.background=' #FFDAB9';
+
+    else 
+      champ.style.background="";
+   }
+
+/**********************************************/
+
+
+
+
+
+
+ function surligne_2 (champ,erreur)
+   {
+    if(erreur)
+    
+      champ.style.background=' #ffff99';
+
+    else 
+      champ.style.background="";
+   }
+
+
+
+/**********************************************/
+    function verifierPseudo(champ)
+  {
+     if(champ.value.length<2)
+     {
+      surligne(champ,true);
+      return false;
+     }
+
+
+     else 
+     {
+      surligne(champ,false);
+      return true;
+     }
+  }
+
+
+/**********************************************/
+
+
+   function verifierTaux(champ)
+  {
+   
+     if(!champ.value)
+     {
+      surligne(champ,true);
+       misstaux.textContent = 'champ obligatoire';
+        misstaux.style.color = 'red';
+        x=0;
+       return false;
+     }
+
+
+     if(champ.value>100)
+     {
+      surligne_2(champ,true);
+       misstaux.textContent = 'Remise ne peut pas depasser 100%';
+        misstaux.style.color = '#ffcc00';
+
+        
+      return false;
+     }
+
+     if(champ.value<10)
+     {
+      surligne_2(champ,true);
+       misstaux.textContent = 'Remise ne peut pas etre inferieure à 10%';
+       misstaux.style.color = '#ffcc00';
+     
+      return false;
+     }
+
+    
+
+    else 
+       {
+         surligne(champ,false);
+         misstaux.textContent ="";
+         
+         return true;
+     }
+  }
+/**********************************************/
+
+   function verifierID(champ)
+  {
+     
+     if(!champ.value)
+     {
+      surligne(champ,true);
+       missid.textContent = 'champ obligatoire';
+       missid.style.color = ' red';
+       x=1;
+      return false;
+     
+     }
+
+   
+    /* else if(champ.value && x==1)
+     {
+      surligne(champ,false);
+         missid.textContent ="";
+            champ.style.background="  #98FB98"; 
+      return true;
+     }
+    */
+
+     else
+     {
+       surligne(champ,false);
+         missid.textContent ="";
+            //champ.style.background=" #EEE8AA"; 
+     }
+  }
+  /************************************************/
+  function verifierDebut(champ)
+  { 
+     
+
+     if(!champ.value)
+     {
+      surligne(champ,true);
+       missdeb.textContent = 'champ obligatoire';
+        missdeb.style.color = 'red';
+       return false;
+     }
+
+     else 
+     {
+      surligne(champ,false);
+      missdeb.textContent ="hm";
+      return true;
+     }
+  }
+  /****************************************/
+
+   function verifierFin(champ)
+  {
+     
+    
+      if(!champ.value)
+     {
+      surligne(champ,true);
+       missfin.textContent = 'champ obligatoire';
+       missfin.style.color = ' red';
+      return false;
+     }
+
+   
+     else 
+     {
+      surligne(champ,false);
+      missfin.textContent ="";
+      
+      return true;
+     }
+  }
+</script>
+</body>
+</html>
+

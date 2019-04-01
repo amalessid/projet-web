@@ -1,0 +1,33 @@
+<html>
+<head>
+  <link rel="stylesheet" href="form.css">
+</head>
+<body>
+<form name="monFormulaire" id="monFormulaire" method="post" onsubmit="return false">
+  
+<div>
+  <label class="label">Votre pseudo :</label> 
+  <input class="controle" type="text" name="pseudo" required pattern="[0-9a-zA-Z-\.]{3,12}" placeholder="De 3 à 12 caractères"> 
+  <span class="resultat"></span>
+</div>
+<div>
+  <label class="label">Votre mail :</label> 
+  <input class="controle" type="email" name="mail" required placeholder="mail@serveur.com"> 
+  <span class="resultat"></span>
+</div>
+<div>
+  <label class="label">Votre contribution :</label> 
+  <input class="controle" type="number" name="contribution" min="0" max="10" required placeholder="Entre 1 et 10"> 
+  <span class="resultat"></span>
+</div>
+<div>
+  <label class="label">Votre date de venue :</label> 
+  <input class="controle" type="date" name="venue"  required> 
+  <span class="resultat"></span>
+</div>
+<div>
+  <input type="submit" value="Envoyer">
+</div>
+</form>
+</body>
+</html>

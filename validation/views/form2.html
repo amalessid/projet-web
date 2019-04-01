@@ -1,0 +1,44 @@
+<html>
+<body>
+<form action="page.php">
+
+<p>
+	pseudo : <input type="texr" name="pseudo" onblur="verifierPseudo(this)" /><br/>
+	age : <input type="texr" name="age" size="2"/><br/>
+    <input type="submit" name="valider">
+</p>
+</form>
+
+
+<script>
+
+  function surligne (champ,erreur)
+   {
+    if(erreur)
+    
+      champ.style.background="red";
+
+    else 
+      champ.style.background="";
+   }
+
+
+    function verifierPseudo(champ)
+  {
+     if(champ.value.length<2)
+     {
+     	surligne(champ,true);
+     	return false;
+     }
+
+
+     else 
+     {
+     	surligne(champ,false);
+     	return true;
+     }
+  }
+
+</script>
+
+</body>
